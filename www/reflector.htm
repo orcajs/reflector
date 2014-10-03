@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://www.orcajs.org/demo2.html -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>orca.js Try It</title>
+
+<!-- Mobile Specific Metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="http://www.orcajs.org/css/style.css">
+<link rel="stylesheet" href="http://www.orcajs.org/css/colors/red.css" id="colors">
+
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Java Script
+================================================== -->
+
+<!-- Demonstration Java Script -->
+<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript" src="./jquery-ui.js"></script>
+<script type="text/javascript" src="./orca/orca.js"></script>
+<script type="text/javascript" src="./orca/orcaReflector.js"></script>
+<script type="text/javascript" src="./application.js"></script>
+<script type="text/javascript" src="./orca/webrtc-polyfill.js"></script>
+
+</head>
+<body>
+
+<!-- Wrapper / Start -->
+<div id="wrapper">
+
+<!-- Header
+================================================== -->
+<div id="top-line"></div>
+
+<!-- 960 Container -->
+<div class="container">
+
+	<!-- Header -->
+	<header id="header">
+
+		<!-- Logo -->
+		  <div class="ten columns">
+		<div id="logo">
+				<h1><a href="http://www.orcajs.org/index.html"><img src="http://www.orcajs.org/images/horiz_logo1.gif" width="300" height="115"></a></h1>
+				<div class="clearfix"></div>
+	    </div>
+	  </div>
+
+		<!-- Social / Contact -->
+		<div class="six columns">
+
+			<!-- Social Icons -->
+			<div class="clearfix"></div>
+
+			<!-- Contact Details -->
+
+			<div class="clearfix"></div>
+
+			<!-- Search -->
+			<nav class="top-search"></nav>
+
+		</div>
+	</header>
+	<!-- Header / End -->
+
+	<div class="clearfix"></div>
+
+</div>
+<!-- 960 Container / End -->
+
+
+<!-- Navigation
+================================================== -->
+<nav id="navigation" class="style-1">
+
+<div class="left-corner"></div>
+<div class="right-corner"></div>
+
+<ul class="menu" id="responsive">
+
+	<li><a href="http://www.orcajs.org/index.html"><i class="halflings white home"></i>Home</a></li>
+
+	<li><a href="http://www.orcajs.org/about.html"><i class="halflings white file"></i>About</a>
+		
+	</li><li><a href="http://www.orcajs.org/documentation.html"><i class="halflings white cog"></i>Documentation &amp; Code</a></li>
+				
+	<li><a href="http://www.orcajs.org/faq.html"><i class="halflings icon-question-sign"></i>FAQ</a></li>
+    
+    <li><a href="http://www.orcajs.org/contact.html"><i class="halflings white pencil"></i> Contact</a></li>
+
+</ul>
+
+</nav>
+<div class="clearfix"></div>
+
+
+<!-- Content
+================================================== -->
+<div id="content">
+
+
+<!-- 960 Container -->
+<div class="container floated">
+
+	<div class="sixteen floated page-title">
+
+		<h2>orca.js Interactive Tour</h2>
+
+		<nav id="breadcrumbs">
+			<ul>
+				<li></li>
+			</ul>
+		</nav>
+
+	</div>
+
+</div>
+<!-- 960 Container / End -->
+
+<!-- Page Content -->
+<div class="page-content">
+
+	<!-- 960 Container -->
+	<div class="container">
+	<!-- Demonstration Content -->
+	
+	
+<div id="page"><!--start page-->
+	<div class="column user" id="user1"><!--start user1-->	
+		<div class="apiObject session" style="float:left;"><!--start apiObject-->
+		<h4>Session</h4>
+		
+		<p class="sessionStatus status">disconnected</p>
+		<p class="sessionError error" style="display: none;"></p>
+		<div class="buttons sessionButtons"><!--start sessionButtons-->
+
+<input type="button" class="sessionConnect" value="Connect">
+<pre>// Create Bob's Session
+bob.session = orca.createSession(
+  'sip:bob@example.com',
+  'password',
+  { uri: 'http://www.example.com:8080',
+    provider: orcaStub,
+    mediatypes: 'audio,video' }
+);
+// Add callbacks
+bob.session.on('connected', session_onConnected);
+bob.session.on('disconnected', session_onDisconnected);
+bob.session.on('error', session_onError);
+bob.session.on('incoming', session_onIncoming);
+bob.session.on('status', session_onStatus);
+// Connect
+bob.session.connect();
+</pre>
+
+<input type="button" class="sessionDisconnect" value="Disconnect" disabled="disabled">
+<pre>// Disconnect Bob's Session
+bob.session.disconnect();
+</pre>
+
+		</div><!--end sessionButtons-->
+		</div><!--end apiObject-->
+		<div class="apiObject call disabled" style="float:right;"><!--start apiObject-->
+		<h4>Call with <input id="callee" placeholder="e.g. sip:alice@example.com" /></h4>
+		<p class="callStatus status"></p>
+		<p class="callError error" style="display: none;"></p>
+		<div class="buttons callButtons"><!--start callButtons-->
+
+<input type="button" class="callConnect" value="Connect" disabled="disabled">
+<pre class="callConnectOut">// Create call to Alice
+bob.call = bob.session.createCall('sip:alice@example.com', 'audio,video');
+// Add callbacks
+bob.call.on('connecting', call_onConnecting);
+bob.call.on('connected', call_onConnected);
+bob.call.on('stream:add', call_onAddStream);
+bob.call.on('disconnected', call_onDisconnected);
+bob.call.on('rejected', call_onRejected);
+bob.call.on('error', call_onError);
+// Connect
+bob.call.connect();
+</pre>
+<pre class="callConnectIn">// Accept call from Alice
+function onUserMediaSuccess(stream){
+  bob.call.addStream(stream);
+  bob.call.connect();
+}
+navigator.getUserMedia({video:video, audio:audio}, onUserMediaSuccess, onUserMediaError);
+</pre>
+
+<input type="button" class="callDisconnect" value="Disconnect" disabled="disabled">
+<pre>// Disconnect call
+bob.call.disconnect();
+</pre>
+
+<input type="button" class="callReject" value="Reject" disabled="disabled">
+<pre>// Reject call from Alice
+bob.call.reject();
+</pre>
+
+		</div><!--end callButtons-->
+		<div class="getmedia" style="display: none;">Please accept microphone/camera permissions</div>
+		<div class="videoContainer">
+			<!-- All video elements are muted here to prevent audio feedback. In a real application, only the local video should be muted. -->
+			<video class="remoteVideo" src="" autoplay="" muted=""></video>
+			<video class="localVideo" src="" autoplay="" muted=""></video>
+		</div>
+		</div><!--end apiObject-->
+		<div class="apiObject" style="float:left;">
+			<h4>Settings</h4>
+			<table style="width:400px;">
+			<tr><td style="width:100px;" >User ID</td><td><input id="userId" placeholder="e.g. sip:bob@example.com" style="width:240px;" /></td><td></td></tr>		
+			<tr><td>Reflector IP</td><td><input id="reflectorIP" placeholder="1.2.3.4:443" style="width:240px;" /></td><td></td></tr>
+			<tr>
+				<td>Stun Server</td><td><input id="stunServer" placeholder="stun:mystunserver:myport" style="width:240px;"/></td>
+				<td><div class="buttons"><input type="button" value="?" class="helpButton" ><pre>To have audio/video exchanged 
+between 2 clients 
+on private address, 
+a stun server is needed </pre></div></td>
+			</tr>
+			<tr>
+				<td>Turn Server</td><td><input id="turnServer" placeholder="turn:myturnserver:myport" style="width:240px;"/></td>
+				<td><div class="buttons"><input type="button" value="?" class="helpButton" ><pre>To have audio/video exchanged 
+between 2 clients 
+behind proxies or firewalls, 
+a turn server is needed </pre></div></td>
+			</tr>
+			</table>
+		</div>
+	</div><!--end user1-->
+
+</div><!--end page-->
+
+	
+	<!-- Demonstration Content / End -->
+
+	</div>
+	<!-- 960 Container / End -->
+
+</div>
+<!-- Page Content / End -->
+
+</div>
+<!-- Content / End -->
+
+</div>
+<!-- Wrapper / End -->
+
+
+<!-- Footer
+================================================== -->
+
+<!-- Footer / Start -->
+<footer id="footer">
+	<!-- 960 Container --><!-- 960 Container / End -->
+
+</footer>
+<!-- Footer / End -->
+
+
+<!-- Footer Bottom / Start  -->
+<footer id="footer-bottom">
+
+	<!-- 960 Container -->
+	<div class="container">
+
+		<!-- Copyrights -->
+		<div class="eight columns">
+			<div class="copyright">
+				© Copyright 2014 by <a href="http://www.orcajs.org/demo2.html#">orca.js</a>. All Rights Reserved.
+			</div>
+		</div>
+
+		<!-- Menu -->
+		<div class="eight columns"></div>
+
+	</div>
+	<!-- 960 Container / End -->
+
+</footer>
+<!-- Footer Bottom / End -->
+
+
+
+
+</body></html>
