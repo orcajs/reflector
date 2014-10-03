@@ -1,4 +1,4 @@
-
+<html><body>
 <img width="601" height="431" src="clip_image002.jpg"/>
 
 
@@ -57,7 +57,7 @@ a simple client application, which is a basic chat UI relying on the transport l
 </ul>
 <p>
     The Reflector can be deployed in any environment, the only constraint being to be reachable by the clients. The client application can run in any WebRTC
-    compatible browser. It may run locally on the userís desktop or hosted remotely on a webserver.
+    compatible browser. It may run locally on the user‚Äôs desktop or hosted remotely on a webserver.
 </p>
 <p>
     This manual will give a description of the 3 components and the way to get them configured and working in your environment.
@@ -100,7 +100,7 @@ a simple client application, which is a basic chat UI relying on the transport l
 </p>
 <pre><code>$ npm install</code></pre>
 <p>
-    You can check that be server works by starting it and ckecking the ìout.logî file<code></code>
+    You can check that be server works by starting it and ckecking the ‚Äúout.log‚Äù file<code></code>
 </p>
 <pre><code>$ node reflector.js</code></pre>
 <p>
@@ -133,7 +133,7 @@ Once registered, clients can setup a call through a session invitation dialog. E
 <pre><code>{'method': 'INVITE', 'from': 'myId', 'to': 'otherId', 'sdp': 'SDP stuff'}</code></pre>
 <pre><code>{'method': 'INVITE/200/OK', 'from': 'otherId', 'to': 'myId', 'sdp': 'SDP stuff'}</code></pre>
 <p>
-    The client is automatically unregistered if its WebSocket connection get closed (closing of the browser, connection cut by a proxy, network failure Ö).
+    The client is automatically unregistered if its WebSocket connection get closed (closing of the browser, connection cut by a proxy, network failure ‚Ä¶).
 </p>
 <h1>
     <a name="_Toc400040357">4. Orca Transport Library for Reflector</a>
@@ -153,14 +153,14 @@ Once registered, clients can setup a call through a session invitation dialog. E
 <pre><code>            uri: &lt;<em>uri of the reflector&gt;</em></code></pre>
 <pre><code>            provider: orcaReflector,</code></pre>
 <pre><code>            mediatypes: 'audio,video',</code></pre>
-<pre><code>            hostilityhelper: {iceServers: [ {Ö}, {Ö} ]}</code></pre>
+<pre><code>            hostilityhelper: {iceServers: [ {‚Ä¶}, {‚Ä¶} ]}</code></pre>
 <pre><code>        };</code></pre>
 <pre><code>session = orca.createSession(userId, 'password', sessionConfig);</code></pre>
 <p>
     It is then up to the client application to implement Orca API calls and callbacks and to map then to the client UI and user interactions
 </p>
 <p>
-    The sessionConfig contains a ìhostilityhelperî parameter that may be useful to setup calls through network hostilities (NAT, firewall, Ö). You may need 2
+    The sessionConfig contains a ‚Äúhostilityhelper‚Äù parameter that may be useful to setup calls through network hostilities (NAT, firewall, ‚Ä¶). You may need 2
     different things:
 </p>
 <p>
@@ -172,7 +172,7 @@ Once registered, clients can setup a call through a session invitation dialog. E
 <p>
     The hostilityhelper parameter may then be provided this way
 </p>
-<pre><code>Hostilityhelper: { ìiceServersî: [ {ëurlí:ístun:mystun.com:1234í], [ ëurlí:íturn:myturn.com:5678í] }</code></pre>
+<pre><code>Hostilityhelper: { ‚ÄúiceServers‚Äù: [ {‚Äòurl‚Äô:‚Äôstun:mystun.com:1234‚Äô], [ ‚Äòurl‚Äô:‚Äôturn:myturn.com:5678‚Äô] }</code></pre>
 <h1>
     <a name="_Toc400040358">5. Demo application</a>
 </h1>
@@ -198,3 +198,4 @@ Once registered, clients can setup a call through a session invitation dialog. E
     It may be run in any WebRTC compatible browser (latest Chrome and Firefox typically). The client page may run locally from your desktop
     (file://reflector.htm) with Firefox or remotely hosted by a web server with Firefox and Chrome.
 </p>
+</body></html>
