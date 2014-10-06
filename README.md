@@ -76,7 +76,7 @@ a simple client application, which is a basic chat UI relying on the transport l
 <pre><code>$ git clone <a href="http://github.com/legat1/reflector">http://github.com/legat1/reflector</a></code></pre>
 <pre><code>$ cd reflector</code></pre>
 <pre><code>$ npm install</code></pre>
-<pre><code>$ sudo npm start</code>    (sudo is require for port below 1024)</pre>
+<pre><code>$ sudo npm start</code>    (sudo is require for port below 1024, or admin privileges on other OS)</pre>
 <p>
     You can access the demo client by going to <a href="http://%3Cserver/">http://&lt;server</a> IP&gt;:443/reflector.htm, where server IP is the IP
     address/server name where nodeJS has been installed.
