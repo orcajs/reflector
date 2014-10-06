@@ -2,6 +2,7 @@ var domain = require("domain");
 var winston = require("winston");
 var connect = require("connect");
 var serveStatic = require("serve-static");
+var serveIndex = require("serve-index");
 var WebSocketServer = require('ws').Server;
 var http = require("http");
 var config = require("./config.js");
@@ -27,7 +28,7 @@ logger.setLevels(winston.config.npm.levels); // silly, debug, verbose, info, war
 
 var app = connect();
 app.use(serveStatic(STATIC_DIR));
-app.use(connect.directory(STATIC_DIR));
+app.use(serveIndex(STATIC_DIR));
 
 var httpServer = http.createServer(app);
 httpServer.on("listening", function() {
