@@ -78,7 +78,7 @@ a simple client application, which is a basic chat UI relying on the transport l
 <pre><code>$ npm install</code></pre>
 <pre><code>$ sudo npm start</code>    (sudo is require for port below 1024, or admin privileges on other OS)</pre>
 <p>
-    You can access the demo client by going to <a href="http://%3Cserver/">http://&lt;server</a> IP&gt;:443/reflector.htm, where server IP is the IP
+    You can access the demo client by going to <a href="http://server IP:443/reflector.htm">http://server IP:443/reflector.htm</a>, where server IP is the IP
     address/server name where nodeJS has been installed.
 </p>
 <h1>
@@ -96,7 +96,7 @@ a simple client application, which is a basic chat UI relying on the transport l
 <p>
     The reflector server can be retrieved from the dedicated GitHub projet
 </p>
-<pre><code>$ git clone http://github.com/orcajs/reflector</code></pre>
+<pre><code>$ git clone http://github.com/legat1/reflector</code></pre>
 <p>
     Go to the directory containing the retrieved copy of the Reflector and install it with Node Packet Manager
 </p>
@@ -104,11 +104,11 @@ a simple client application, which is a basic chat UI relying on the transport l
 <p>
     You can check that be server works by starting it and ckecking the “out.log” file<code></code>
 </p>
-<pre><code>$ node reflector.js</code></pre>
+<pre><code>$ sudo node reflector.js</code></pre>
 <p>
     The server port can be configured in the <code>config.js</code> file. <code>npm</code> can also be used to start the server as daemon
 </p>
-<pre><code>$ npm start</code></pre>
+<pre><code>$ sudo npm start</code></pre>
 <h1>
     <a name="_Toc400040356"></a>
     <a name="user-content-the-orca-reflector-signaliz"></a>
@@ -146,9 +146,9 @@ Once registered, clients can setup a call through a session invitation dialog. E
 <p>
     The transport library can be retrieved from the dedicated GitHub projet
 </p>
-<pre><code>$ git clone https://github.com/orcajs/reflector/www/orca</code></pre>
+<pre><code>$ git clone https://github.com/legat1/reflector</code></pre>
 <p>
-    In order to be used, the transport library has to be integrated in a client application. This application first has to start the library with a
+    In order to be used, the transport library inside directory www/orca/ has to be integrated in a client application. This application first has to start the library with a
     configuration pointing to the reflector URL (e.g. ws://reflector.ip:port)
 </p>
 <pre><code>sessionConfig = {</code></pre>
@@ -193,9 +193,9 @@ Once registered, clients can setup a call through a session invitation dialog. E
     </li>
 </ul>
 <p>
-    The client application can be retrieved from the dedicated GitHub projet
+    The client application can be retrieved from the dedicated GitHub projet inside www directory
 </p>
-<pre><code>$ git clone https://github.com/orcajs/reflector/www</code></pre>
+<pre><code>$ git clone https://github.com/legat1/reflector</code></pre>
 <p>
     It may be run in any WebRTC compatible browser (latest Chrome and Firefox typically). The client page may run locally from your desktop
     (file://reflector.htm) with Firefox or remotely hosted by a web server with Firefox and Chrome.
