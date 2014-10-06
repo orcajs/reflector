@@ -73,10 +73,10 @@ a simple client application, which is a basic chat UI relying on the transport l
 <p>
     Install NodeJS (pick installation package adapted to your OS at http://nodejs.org/download/
 </p>
-<pre><code>$ git clone <a href="http://github.com/orcajs/reflector">http://github.com/orcajs/reflector</a></code></pre>
+<pre><code>$ git clone <a href="http://github.com/legat1/reflector">http://github.com/legat1/reflector</a></code></pre>
 <pre><code>$ cd reflector</code></pre>
 <pre><code>$ npm install</code></pre>
-<pre><code>$ npm start</code></pre>
+<pre><code>$ sudo npm start</code>    (sudo is require for port below 1024)</pre>
 <p>
     You can access the demo client by going to <a href="http://%3Cserver/">http://&lt;server</a> IP&gt;:443/reflector.htm, where server IP is the IP
     address/server name where nodeJS has been installed.
