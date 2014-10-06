@@ -11,11 +11,11 @@
 		"start": "node reflector.js"
 	},
 	"dependencies": {
-		"connect": "==3.2.0",
-		"serve-static": "==1.6.3",
-		"serve-index": "==1.4.0",
-		"winston": "==0.8.0",
-		"ws": "==0.4.32"
+		"connect": "3.2.0",
+		"serve-static": "1.6.3",
+		"serve-index": "1.4.0",
+		"winston": "0.8.0",
+		"ws": "0.4.32"
 	},
 	"repository": {
 		"type": "git",
