@@ -1,5 +1,5 @@
 {
-	"name": "orcaReflector",
+	"name": "reflector",
 	"version": "0.0.1",
 	"description": "Orca Server Relay for tests with Orca",
 	"author": {
@@ -17,6 +17,6 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/legat1/orcaReflector.git"
+		"url": "https://github.com/legat1/reflector.git"
 	}
 }
