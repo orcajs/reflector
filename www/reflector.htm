@@ -14,8 +14,9 @@
 <!-- CSS
 ================================================== -->
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="http://www.orcajs.org/css/style.css">
-<link rel="stylesheet" href="http://www.orcajs.org/css/colors/red.css" id="colors">
+<link rel="stylesheet" href="style.orcajs.css">
+<link rel="stylesheet" href="responsive.css">
+
 
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -79,29 +80,6 @@
 <!-- 960 Container / End -->
 
 
-<!-- Navigation
-================================================== -->
-<nav id="navigation" class="style-1">
-
-<div class="left-corner"></div>
-<div class="right-corner"></div>
-
-<ul class="menu" id="responsive">
-
-	<li><a href="http://www.orcajs.org/index.html"><i class="halflings white home"></i>Home</a></li>
-
-	<li><a href="http://www.orcajs.org/about.html"><i class="halflings white file"></i>About</a>
-		
-	</li><li><a href="http://www.orcajs.org/documentation.html"><i class="halflings white cog"></i>Documentation &amp; Code</a></li>
-				
-	<li><a href="http://www.orcajs.org/faq.html"><i class="halflings icon-question-sign"></i>FAQ</a></li>
-    
-    <li><a href="http://www.orcajs.org/contact.html"><i class="halflings white pencil"></i> Contact</a></li>
-
-</ul>
-
-</nav>
-<div class="clearfix"></div>
 
 
 <!-- Content
@@ -211,7 +189,7 @@ bob.call.reject();
 		<div class="getmedia" style="display: none;">Please accept microphone/camera permissions</div>
 		<div class="videoContainer">
 			<!-- All video elements are muted here to prevent audio feedback. In a real application, only the local video should be muted. -->
-			<video class="remoteVideo" src="" autoplay=""></video>
+			<video class="remoteVideo" src="" autoplay="" muted=""></video>
 			<video class="localVideo" src="" autoplay="" muted=""></video>
 		</div>
 		</div><!--end apiObject-->

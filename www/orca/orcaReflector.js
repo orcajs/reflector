@@ -44,6 +44,7 @@
 		this.peerConnection = null;
 		this.messageQueue = [];
 		var signalingReady = false;
+		this.remoteSDP = null;
 
         if (isIncoming) {
             this.status = CallStatus.CONNECTING;
@@ -74,11 +75,14 @@
 					this.inStatus = status;                
                     this.session.removeCall(this);	
 					break;
-				case CallStatus.SDP:
-					this.peerConnection.setRemoteDescription(new RTCSessionDescription(data));	
-					signalingReady = true;		
-					if (!this.isIncoming)                          										
+				case CallStatus.SDP:					
+					if (!this.isIncoming) {
+						this.peerConnection.setRemoteDescription(new RTCSessionDescription(data));	
+						signalingReady = true;			
 						this.callback.triggerEvent(CallStatus.CONNECTED);
+					} else {
+						this.remoteSDP = data;
+					}
 					break;
 				case CallStatus.ICE:
 					if (data) {
@@ -147,7 +151,10 @@
 		
 			var self = this;
 			var stream = this.callback.streams('local')[0].stream();
-			this.peerConnection.addStream(stream);						
+			this.peerConnection.addStream(stream);
+			this.peerConnection.setRemoteDescription(new RTCSessionDescription(this.remoteSDP));	
+			signalingReady = true;			
+
 			this.peerConnection.createAnswer(function(desc) {
 				self.peerConnection.setLocalDescription(desc, function() {					
 					self.session.wsconn.send(Protocol.CALL_OK, to, 'sdp', desc)});
