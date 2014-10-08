@@ -353,7 +353,7 @@
 		
 		
 		this._onwsclose = function (event) {		
-			alert("Server connection closed!");
+			this.session.triggerEvent(SessionStatus.ERROR, "Server connection closed!");
 			this.session.disconnect();
 			clearInterval(this.timerID);
 		}
