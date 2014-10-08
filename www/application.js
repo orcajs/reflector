@@ -157,8 +157,8 @@ function call_onRejected(event) {
 function call_onError(event) {
     var id = this.sid;
     console.log('call_onError ' + id + ' ' + event.error);
-    $('#' + id + ' .sessionStatus').html(event.type);
-    $('#' + id + ' .error').html(CallErrorMap[event.error] || event.error).show();
+    $('#' + id + ' .callStatus').html(event.type);
+    $('#' + id + ' .callError').html(CallErrorMap[event.error] || event.error).show();
     callCleanup(id);
 }
 

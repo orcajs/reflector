@@ -124,26 +124,24 @@
 
 <input type="button" class="sessionConnect" value="Connect">
 <pre>// Create Bob's Session
-bob.session = orca.createSession(
-  'sip:bob@example.com',
-  'password',
+session = orca.createSession('bob', 'passwd',
   { uri: 'http://www.example.com:8080',
-    provider: orcaStub,
+    provider: orcaReflector,
     mediatypes: 'audio,video' }
 );
 // Add callbacks
-bob.session.on('connected', session_onConnected);
-bob.session.on('disconnected', session_onDisconnected);
-bob.session.on('error', session_onError);
-bob.session.on('incoming', session_onIncoming);
-bob.session.on('status', session_onStatus);
+session.on('connected', session_onConnected);
+session.on('disconnected', session_onDisconnected);
+session.on('error', session_onError);
+session.on('incoming', session_onIncoming);
+session.on('status', session_onStatus);
 // Connect
-bob.session.connect();
+session.connect();
 </pre>
 
 <input type="button" class="sessionDisconnect" value="Disconnect" disabled="disabled">
 <pre>// Disconnect Bob's Session
-bob.session.disconnect();
+session.disconnect();
 </pre>
 
 		</div><!--end sessionButtons-->
@@ -156,40 +154,40 @@ bob.session.disconnect();
 
 <input type="button" class="callConnect" value="Connect" disabled="disabled">
 <pre class="callConnectOut">// Create call to Alice
-bob.call = bob.session.createCall('sip:alice@example.com', 'audio,video');
+call = session.createCall('sip:alice@example.com', 'audio,video');
 // Add callbacks
-bob.call.on('connecting', call_onConnecting);
-bob.call.on('connected', call_onConnected);
-bob.call.on('stream:add', call_onAddStream);
-bob.call.on('disconnected', call_onDisconnected);
-bob.call.on('rejected', call_onRejected);
-bob.call.on('error', call_onError);
+call.on('connecting', call_onConnecting);
+call.on('connected', call_onConnected);
+call.on('stream:add', call_onAddStream);
+call.on('disconnected', call_onDisconnected);
+call.on('rejected', call_onRejected);
+call.on('error', call_onError);
 // Connect
-bob.call.connect();
+call.connect();
 </pre>
 <pre class="callConnectIn">// Accept call from Alice
 function onUserMediaSuccess(stream){
-  bob.call.addStream(stream);
-  bob.call.connect();
+  call.addStream(stream);
+  call.connect();
 }
 navigator.getUserMedia({video:video, audio:audio}, onUserMediaSuccess, onUserMediaError);
 </pre>
 
 <input type="button" class="callDisconnect" value="Disconnect" disabled="disabled">
 <pre>// Disconnect call
-bob.call.disconnect();
+call.disconnect();
 </pre>
 
 <input type="button" class="callReject" value="Reject" disabled="disabled">
 <pre>// Reject call from Alice
-bob.call.reject();
+call.reject();
 </pre>
 
 		</div><!--end callButtons-->
 		<div class="getmedia" style="display: none;">Please accept microphone/camera permissions</div>
 		<div class="videoContainer">
 			<!-- All video elements are muted here to prevent audio feedback. In a real application, only the local video should be muted. -->
-			<video class="remoteVideo" src="" autoplay="" muted=""></video>
+			<video class="remoteVideo" src="" autoplay=""></video>
 			<video class="localVideo" src="" autoplay="" muted=""></video>
 		</div>
 		</div><!--end apiObject-->

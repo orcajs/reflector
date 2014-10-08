@@ -9,12 +9,14 @@
     SessionStatus.CONNECTING = 'connecting';
     SessionStatus.DISCONNECTED = 'disconnected';
     SessionStatus.INCOMINGCALL = 'incomingCall';
+    SessionStatus.ERROR = 'error';
 
     CallStatus = {};
     CallStatus.CONNECTING = 'connecting';
     CallStatus.HOLD = 'hold';
     CallStatus.UNHOLD = 'unhold';
     CallStatus.REJECTED = 'rejected';
+    CallStatus.ERROR = 'error'
     CallStatus.CONNECTED = 'connected';
     CallStatus.DISCONNECTED = 'disconnected';
     CallStatus.ADDSTREAM = 'stream:add';
@@ -65,15 +67,17 @@
 					this.remoteStreamsList.push(data);
 					break;
 				case CallStatus.CONNECTED:
-				case CallStatus.CONNECTING:
+				case CallStatus.CONNECTING:		
 					this.status = status;
 					this.inStatus = status;
 					break;
 				case CallStatus.DISCONNECTED:
 				case CallStatus.REJECTED:
+				case CallStatus.ERROR:
 					this.status = status;
 					this.inStatus = status;                
-                    this.session.removeCall(this);	
+					if (data) eventInfo.error = data;
+                    			this.session.removeCall(this);	
 					break;
 				case CallStatus.SDP:					
 					if (!this.isIncoming) {
@@ -198,21 +202,22 @@
 
     function Session(userId, token, config, callback) {
         this.userId = userId;
-		this.sessionConfig = config;
+	this.sessionConfig = config;
         this.callback = callback;
         this.status = SessionStatus.DISCONNECTED;
         this.inStatus = SessionStatus.DISCONNECTED;
         this.call = false;
-		this.wsconn = new WSConnection(this);        
+	this.wsconn = new WSConnection(this);        
 
-        this.triggerEvent = function (status, call) {
+        this.triggerEvent = function (status, data) {
             var eventInfo = {}, i;
-            if (call) {
-                eventInfo.call = call;
-                this.call = call;
+            if (status == SessionStatus.INCOMINGCALL) {
+                eventInfo.call = data;
+                this.call = data;
             } else {
                 this.status = status;
                 this.inStatus = status;
+		if (data) eventInfo.error = data;
             }
             this.emitter.emit(status, eventInfo, this.callback);
         };
@@ -227,8 +232,8 @@
 
         this.connect = function () {
             if (this.inStatus === SessionStatus.DISCONNECTED) {                
-				this.triggerEvent(SessionStatus.CONNECTING);                
-				this.wsconn.open();                                                    
+		this.triggerEvent(SessionStatus.CONNECTING);                
+		this.wsconn.open();                                                    
 				
             }
         };
@@ -241,9 +246,9 @@
             
             if (this.call) {
                 this.call.disconnect();
-				this.removeCall(this.call);
+		this.removeCall(this.call);
             }
-			this.wsconn.close();
+            this.wsconn.close();
             this.triggerEvent(SessionStatus.DISCONNECTED);            
 			
         };
@@ -333,11 +338,11 @@
 			else if (json.method == Protocol.CALL_TERMINATE) 			
 				this.session.call.triggerEvent(CallStatus.DISCONNECTED);
 			else if (json.method.indexOf(Protocol.CALL_ERROR) == 0) {
-				alert("Call error: " + json.method);
+				this.session.call.triggerEvent(CallStatus.ERROR, json.method);
 				this.session.call.disconnect();
 			}
 			else if (json.method.indexOf(Protocol.REGISTER_ERROR) == 0) {
-				alert("Session error: " + json.method);
+				this.session.triggerEvent(SessionStatus.ERROR, json.method);
 				this.session.disconnect();
 			}
 		};
