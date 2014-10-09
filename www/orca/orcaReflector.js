@@ -339,11 +339,11 @@
 				this.session.call.triggerEvent(CallStatus.DISCONNECTED);
 			else if (json.method.indexOf(Protocol.CALL_ERROR) == 0) {
 				this.session.call.triggerEvent(CallStatus.ERROR, json.method);
-				this.session.call.disconnect();
+				if (this.session.call) this.session.call.disconnect();
 			}
 			else if (json.method.indexOf(Protocol.REGISTER_ERROR) == 0) {
 				this.session.triggerEvent(SessionStatus.ERROR, json.method);
-				this.session.disconnect();
+				if (this.session) this.session.disconnect();
 			}
 		};
 		
