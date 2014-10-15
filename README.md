@@ -78,6 +78,10 @@ a simple client application, which is a basic chat UI relying on the transport l
 <pre><code>$ npm install</code></pre>
 <pre><code>$ sudo npm start</code>    (sudo is require for port below 1024, or admin privileges on other OS)</pre>
 <p>
+Note that if you are behind a corporate proxy, your Git or GitHub client and npm have to be configured with the proxy URL<br/>
+On Windows systems, a bug on NPM requires to manually create the 'C:\Users\user_id\AppData\Roaming\npm folder if you meet the NOENT error
+</p>
+<p>
     You can access the demo client by going to <a href="http://server IP:443/reflector.htm">http://server IP:443/reflector.htm</a>, where server IP is the IP
     address/server name where nodeJS has been installed.
 </p>
@@ -101,6 +105,10 @@ a simple client application, which is a basic chat UI relying on the transport l
     Go to the directory containing the retrieved copy of the Reflector and install it with Node Packet Manager
 </p>
 <pre><code>$ npm install</code></pre>
+<p>
+Note that if you are behind a corporate proxy, your Git or GitHub client and npm have to be configured with the proxy URL<br/>
+On Windows systems, a bug on NPM requires to manually create the 'C:\Users\user_id\AppData\Roaming\npm folder if you meet the NOENT error
+</p>
 <p>
     You can check that be server works by starting it and ckecking the “out.log” file<code></code>
 </p>
