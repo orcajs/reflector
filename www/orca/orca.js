@@ -1,4 +1,10 @@
 /*jslint browser: true, sloppy: true */
+/**
+ *@FileOverview This file provides an Orca compliant API.
+ *For more information visit {@Link http://www.orcajs.org/}. For the master specification
+ *of the Orca API visit {@Link https://github.com/orcajs/orca.js}.
+ *
+ */
 
 (function () {
     var CallError, SessionError, orca;
@@ -327,10 +333,10 @@
         *        Triggered when a call is connected
         *   "disconnected" 
         *        Triggered when a call is disconnected
-        *   "error" - (Arguments: {CallError} Indicates the error that caused the event)
-        *        Triggered when an error condition occurs 
-        *   "stream:add" (Arguments: {orca.ManagedStream} remote media stream)
-        *        Triggered when a remote stream is added to the call
+        *   "error" -
+        *        Triggered when an error condition occurs. The event.error property indicates the error that caused the event.
+        *   "stream:add"
+        *        Triggered when a remote stream is added to the call. The event.stream property is the remote media stream.
         *   "connecting" - 
         *        Triggered when a call has initiated an attempt to connect to a remote party 
         *   "hold" - 
@@ -435,14 +441,14 @@
         /**
         * @summary Adds a listener for a session event
         * Valid event names are:
-        *   "connected" 
+        *   "connected" -
         *        Triggered when the session is connected successfully
-        *   "disconnected" 
+        *   "disconnected" -
         *        Triggered when the session is disconnected
-        *   "error" - (Arguments: {SessionError} indicates the error that caused the event)
-        *        Triggered when an error condition occurs 
-        *   "incomingCall" (Arguments: {orca.Call} incoming call object)
-        *        Triggered when an incoming communication is received during an active session
+        *   "error" - 
+        *        Triggered when an error condition occurs. The event.error property indicates the error that caused the event
+        *   "incomingCall" -
+        *        Triggered when an incoming communication is received during an active session.  The *        event.call property of type orca.Call is the incoming call object.
         *   "connecting" - 
         *        Triggered when a session is in the process of being established 
         * @event
@@ -496,6 +502,9 @@
     * @typedef Event
     * @type object 
     * @property {String} name Gets the name/type indicator of the event
+	* @property {String} [error] An {@link orca.CallError} or {@link orca.SessionError}
+    * @property {orca.Call} [call] The object representing an incoming call.
+    * @property {orca.ManagedStream} [stream] The object representing a remote stream.
     */
 
     /**

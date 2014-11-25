@@ -4,14 +4,14 @@ reflector
 <img width="601" height="431" src="www/doc/clip_image002.jpg"/>
 
 
-<h1>Reflector demo application</h1>
+<h1>Orca Reflector and demo application</h1>
 
 <h2>
     Developer manual
 </h2>
 <br clear="all"/>
 <h3>
-    Sommaire
+    Contents
 </h3>
 <p>
     <a href="#_Toc400040352">1. Introduction. </a>
@@ -41,7 +41,7 @@ reflector
     <a name="_Toc400040352">1. Introduction</a>
 </h1>
 <p>
-    The reflector project is a complete client/server demo application highlighting the value of Orca API. It enables a 2 party audio/video chat in a browser.
+    The reflector project is a complete client/server demo application highlighting the value of Orca API. It also provides a tool for testing Orca applications in a local environment. The demo application enables a 2 party audio/video calls in a browser using the Orca API.
 </p>
 <p>
  This demo application relies on:
@@ -54,7 +54,7 @@ a signaling server (so called Reflector) based on NodeJS,
 a transport library, which an implementation of the Orca API dedicated to the reflector protocol,
 </li>
 <li>
-a simple client application, which is a basic chat UI relying on the transport library.
+a simple example client application, which is a basic chat UI relying on the transport library.
 </li>
 </ul>
 <p>
@@ -63,6 +63,9 @@ a simple client application, which is a basic chat UI relying on the transport l
 </p>
 <p>
     This manual will give a description of the 3 components and the way to get them configured and working in your environment.
+</p>
+<p>
+	For more information about the Orca project please visit <a herf="http://www.orcajs.org/">http://www.orcajs.org/</a>.
 </p>
 <h1>
     <a name="_Toc400040353">2. Quick start</a>
@@ -73,7 +76,7 @@ a simple client application, which is a basic chat UI relying on the transport l
 <p>
     Install NodeJS (pick installation package adapted to your OS at http://nodejs.org/download/
 </p>
-<pre><code>$ git clone <a href="http://github.com/legat1/reflector">http://github.com/legat1/reflector</a></code></pre>
+<pre><code>$ git clone <a href="https://github.com/orcajs/reflector">https://github.com/orcajs/reflector</a></code></pre>
 <pre><code>$ cd reflector</code></pre>
 <pre><code>$ npm install</code></pre>
 <pre><code>$ sudo npm start</code>    (sudo is require for port below 1024, or admin privileges on other OS)</pre>
@@ -98,9 +101,9 @@ On Windows systems, a bug on NPM requires to manually create the 'C:\Users\user_
     a. Installation and configuration
 </h1>
 <p>
-    The reflector server can be retrieved from the dedicated GitHub projet
+    The reflector server can be retrieved from the dedicated GitHub project
 </p>
-<pre><code>$ git clone http://github.com/legat1/reflector</code></pre>
+<pre><code>$ git clone https://github.com/orcajs/reflector</code></pre>
 <p>
     Go to the directory containing the retrieved copy of the Reflector and install it with Node Packet Manager
 </p>
@@ -110,13 +113,18 @@ Note that if you are behind a corporate proxy, your Git or GitHub client and npm
 On Windows systems, a bug on NPM requires to manually create the 'C:\Users\user_id\AppData\Roaming\npm folder if you meet the NOENT error
 </p>
 <p>
-    You can check that be server works by starting it and ckecking the “out.log” file<code></code>
+    You can check that be server works by starting it and ckecking the “out.log” file.
 </p>
 <pre><code>$ sudo node reflector.js</code></pre>
 <p>
-    The server port can be configured in the <code>config.js</code> file. <code>npm</code> can also be used to start the server as daemon
+    The server IP port can be configured in the <code>config.js</code> file. <code>npm</code> can also be used to start the server as daemon.
 </p>
 <pre><code>$ sudo npm start</code></pre>
+<p>
+	Note that the reflector is only intended to be used in testing environments
+	where security and scaling are not practical issues. The reflector does not
+	provide any security features.
+</p>
 <h1>
     <a name="_Toc400040356"></a>
     <a name="user-content-the-orca-reflector-signaliz"></a>
@@ -152,9 +160,9 @@ Once registered, clients can setup a call through a session invitation dialog. E
     Implementing the Orca API, a dedicated transport library is available implementing the Reflector protocol.
 </p>
 <p>
-    The transport library can be retrieved from the dedicated GitHub projet
+    The transport library can be retrieved from the dedicated GitHub project
 </p>
-<pre><code>$ git clone https://github.com/legat1/reflector</code></pre>
+<pre><code>$ git clone https://github.com/orcajs/reflector</code></pre>
 <p>
     In order to be used, the transport library inside directory www/orca/ has to be integrated in a client application. This application first has to start the library with a
     configuration pointing to the reflector URL (e.g. ws://reflector.ip:port)
@@ -201,9 +209,9 @@ Once registered, clients can setup a call through a session invitation dialog. E
     </li>
 </ul>
 <p>
-    The client application can be retrieved from the dedicated GitHub projet inside www directory
+    The client application can be retrieved from the dedicated GitHub project inside the www directory.
 </p>
-<pre><code>$ git clone https://github.com/legat1/reflector</code></pre>
+<pre><code>$ git clone https://github.com/orcajs/reflector</code></pre>
 <p>
     It may be run in any WebRTC compatible browser (latest Chrome and Firefox typically). The client page may run locally from your desktop
     (file://reflector.htm) with Firefox or remotely hosted by a web server with Firefox and Chrome.
