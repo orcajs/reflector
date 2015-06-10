@@ -40,6 +40,14 @@ reflector
 <h1>
     <a name="_Toc400040352">1. Introduction</a>
 </h1>
+<p>Orca.js is a JavaScript API for supporting Real Time Communications (RTC) in web applications. Orca.js abstracts the implementation of RTC from the application allowing application code to be portable accross different RTC providers. For more information go to:
+</p>
+<ul>
+  <li><a href="http://www.orcajs.org">www.orcajs.org</a></li>
+  <li><a href="https://github.com/orcajs/orca.js">github.com/orcajs/orca.js</a></li>
+</ul>
+<p>
+   This reflector project is an implementation of the Orca API for development, testing and experimentation purposes. It is designed to support 2 party calls between endpoints on a secure LAN. The reflector, as provided here, is not intended to be used on the Internet or in any other kind of real applications. It does not provide good support for security or robustness features that would be required in real deployments.
 <p>
     The reflector project is a complete client/server demo application highlighting the value of Orca API. It also provides a tool for testing Orca applications in a local environment. The demo application enables a 2 party audio/video calls in a browser using the Orca API.
 </p>
@@ -63,9 +71,6 @@ a simple example client application, which is a basic chat UI relying on the tra
 </p>
 <p>
     This manual will give a description of the 3 components and the way to get them configured and working in your environment.
-</p>
-<p>
-	For more information about the Orca project please visit <a herf="http://www.orcajs.org/">http://www.orcajs.org/</a>.
 </p>
 <h1>
     <a name="_Toc400040353">2. Quick start</a>
