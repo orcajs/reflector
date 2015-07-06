@@ -146,7 +146,7 @@
 			this.peerConnection.addStream(stream);
 			this.peerConnection.createOffer(function(desc) {
 				self.peerConnection.setLocalDescription(desc, function() {					
-					self.session.wsconn.send(Protocol.CALL, to, 'sdp', desc)});
+					self.session.wsconn.send(Protocol.CALL, to, 'sdp', desc)}, error);
 			}, error);
 		
 		};
@@ -161,7 +161,7 @@
 
 			this.peerConnection.createAnswer(function(desc) {
 				self.peerConnection.setLocalDescription(desc, function() {					
-					self.session.wsconn.send(Protocol.CALL_OK, to, 'sdp', desc)});
+					self.session.wsconn.send(Protocol.CALL_OK, to, 'sdp', desc)}, error);
 				}, error);
 					
 			while (this.messageQueue.length > 0)
